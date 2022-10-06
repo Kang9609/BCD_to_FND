@@ -12,7 +12,7 @@ module FND_Select_Decoder
 
     assign o_digit = r_digit;    // reg : memory ê¸°ëŠ¥
 
-    always @(i_digitSelect or i_en) begin   // ?•­?ƒ ()?•ˆ?˜ ?…? ¥?„ ë³´ê³ ?ˆ?‹¤,  (a,b) = (a or b)
+    always @(i_digitSelect or i_en) begin   // ?ï¿½ï¿½?ï¿½ï¿½ ()?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ë³´ê³ ?ï¿½ï¿½?ï¿½ï¿½,  (a,b) = (a or b)
         if (i_en) begin
             r_digit = 4'b1111;
         end

@@ -9,7 +9,7 @@ module Calculator
     input [1:0] i_digitSelect,
     input i_en,
     output [3:0] o_digit,
-    output [3:0] o_fndfont,
+    output [7:0] o_fndfont
 
 );
 
@@ -27,7 +27,7 @@ module Calculator
     (
 
         .i_digitSelect(i_digitSelect),
-        .i_value(w_result),
+        .i_sum(w_result),
         .i_en(i_en),
         .o_digit(o_digit),
         .o_fndfont(o_fndfont)

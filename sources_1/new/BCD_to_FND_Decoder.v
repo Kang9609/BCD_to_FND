@@ -6,17 +6,11 @@ module BCD_to_FND_Decoder
 (
     input [3:0] i_sum,
     input i_en,
-    input [1:0] i_digitSelect,
-    output [7:0] o_font,
-    output [3:0] o_digit
+
+    output [7:0] o_font
+
 );
 
-    FND_Select_Decoder fndSelect
-    (
-        .i_digitSelect(i_digitSelect),
-        .i_en(i_en),
-        .o_digit(o_digit)
-    );
 
     // reg [3:0] r_digit;
 
