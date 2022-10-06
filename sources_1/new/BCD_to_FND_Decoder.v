@@ -4,21 +4,50 @@
 
 module BCD_to_FND_Decoder
 (
-    input [3:0] i_value,
+    input [3:0] i_sum,
     input i_en,
-    output [7:0] o_font
+    input [1:0] i_digitSelect,
+    output [7:0] o_font,
+    output [3:0] o_digit
 );
+
+    FND_Select_Decoder fndSelect
+    (
+        .i_digitSelect(i_digitSelect),
+        .i_en(i_en),
+        .o_digit(o_digit)
+    );
+
+    // reg [3:0] r_digit;
+
+    // assign o_digit = r_digit;    // reg : memory 기능
+
+    // always @(i_digitSelect or i_en) begin   // ?��?�� ()?��?�� ?��?��?�� 보고?��?��,  (a,b) = (a or b)
+    //     if (i_en) begin
+    //         r_digit = 4'b1111;
+    //     end
+    //     else begin
+    //         case (i_digitSelect)
+    //             2'h0 : r_digit = 4'b1110;        // h0 : 16bit
+    //             2'h1 : r_digit = 4'b1101;
+    //             2'h2 : r_digit = 4'b1011;
+    //             2'h3 : r_digit = 4'b0111;
+    //         endcase
+    //     end
+
+    // end
+
 
     reg [7:0] r_font;
     assign o_font = r_font;
 
-    always @(i_value or i_en) begin
+    always @(i_sum or i_en) begin
         if (i_en) begin
             r_font = 8'hff;
         end
 
         else begin
-            case (i_value)
+            case (i_sum)
                 4'h0 : r_font = 8'hc0;
                 4'h1 : r_font = 8'hf9;
                 4'h2 : r_font = 8'ha4;
@@ -29,7 +58,7 @@ module BCD_to_FND_Decoder
                 4'h7 : r_font = 8'hf8;
                 4'h8 : r_font = 8'h80;
                 4'h9 : r_font = 8'h90;
-                default r_font = 8'hff;   // Latch 방�?
+                default r_font = 8'hff;   // Latch 방�?
             endcase
         end
 
